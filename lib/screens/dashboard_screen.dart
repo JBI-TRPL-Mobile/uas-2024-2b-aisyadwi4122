@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'message_screen.dart'; // Pastikan mengimport MessageScreen
+import 'message_screen.dart';
+import 'profile_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
 
@@ -20,7 +21,10 @@ class DashboardScreen extends StatelessWidget {
             icon: Icon(Icons.person),
             onPressed: () {
               // Navigasi ke halaman profil
-              print('Person icon pressed');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileScreen()),
+              );
             },
           ),
         ],
@@ -130,7 +134,13 @@ class DashboardScreen extends StatelessWidget {
               context,
               MaterialPageRoute(builder: (context) => MessageScreen()),
             );
-          }
+          }else if (index == 2) {
+            // Navigasi ke ProfileScreen jika profil ditekan
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProfileScreen()),
+            );
+          }  
         } 
       ),
     );
