@@ -13,9 +13,8 @@ class _SignInScreenState extends State<SignInScreen> {
     String email = emailController.text;
     String password = passwordController.text;
 
-    // Lakukan validasi dan proses login di sini
     if (email.isNotEmpty && password.isNotEmpty) {
-      Navigator.pushNamed(context, '/home');
+      Navigator.pushNamed(context, '/dashboard');
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Please enter email and password')),
@@ -62,13 +61,12 @@ class _SignInScreenState extends State<SignInScreen> {
                 style: TextStyle(fontSize: 14, color: Colors.black54),
               ),
               SizedBox(height: 10),
-              // Tombol Sign In dengan Google dan Facebook
+              
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
                     onPressed: () {
-                      // Aksi untuk Google Sign In
                       print("Google Sign In clicked");
                     },
                     icon: Icon(Icons.g_mobiledata, size: 40),
@@ -76,7 +74,6 @@ class _SignInScreenState extends State<SignInScreen> {
                   SizedBox(width: 20),
                   IconButton(
                     onPressed: () {
-                      // Aksi untuk Facebook Sign In
                       print("Facebook Sign In clicked");
                     },
                     icon: Icon(Icons.facebook, size: 40),

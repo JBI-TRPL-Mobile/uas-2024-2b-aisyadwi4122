@@ -26,7 +26,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       // Panggil API backend atau lakukan proses pendaftaran lainnya
       print('User registered successfully: $name, $email');
       // Navigasi ke halaman berikutnya (misalnya halaman home)
-      Navigator.pushNamed(context, '/home');
+      Navigator.pushNamed(context, '/dashboard');
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please enter all fields and confirm password')),
