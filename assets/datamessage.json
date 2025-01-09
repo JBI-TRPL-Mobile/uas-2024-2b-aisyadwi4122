@@ -1,0 +1,25 @@
+[
+    {
+        "id": 1,
+        "sender": "Aisya Dwi Anggita",
+        "message": "Hello, kamu belajar apa hari ini?",
+        "time": "10:30 AM"
+    },
+
+    {
+        "id": 2,
+        "sender": "Fitria Ayu",
+        "message": "Bisa ketemua besok ga?",
+        "time": "9:15 AM"
+   
+    },
+
+    {
+        "id": 3,
+        "sender": "diana",
+        "message": "Kamu lagi apa?",
+        "time": "Yesterday"
+    }
+
+
+]

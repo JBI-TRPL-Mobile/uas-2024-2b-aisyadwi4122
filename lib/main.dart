@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
+import 'package:template_project/screens/welcome_screen.dart';
+import 'package:template_project/screens/signin_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,12 +13,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Aisya Dwi Anggita',
+      title: 'UAS Aisya Dwi Anggita',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => WelcomeScreen(),
+        // '/home': (context) => HomeScreen(),
+        // '/signup': (context) => SignUpScreen(),
+        '/signin': (context) => SignInScreen(),
+      },
     );
   }
 }
