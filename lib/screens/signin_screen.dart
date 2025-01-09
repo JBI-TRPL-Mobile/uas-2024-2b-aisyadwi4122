@@ -1,88 +1,62 @@
 import 'package:flutter/material.dart';
 
-class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+class SignInScreen extends StatefulWidget {
+  @override
+  _SignInScreenState createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  void handleSignIn() {
+    String email = emailController.text;
+    String password = passwordController.text;
+
+    // Lakukan validasi dan proses login di sini
+    if (email.isNotEmpty && password.isNotEmpty) {
+      Navigator.pushNamed(context, '/home');
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please enter email and password')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // Judul Sign In
-              Text(
-                "Sign In",
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                ),
+      appBar: AppBar(title: Text('Sign In')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.person, size: 100, color: Color.fromARGB(255, 152, 187, 244)),
+            SizedBox(height: 20),
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(
+                labelText: 'Email',
+                border: OutlineInputBorder(),
               ),
-              SizedBox(height: 10),
-              // Deskripsi teks
-              Text(
-                "Buatlah Akun untuk masuk ke tahap selanjutnya",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.black54,
-                ),
+            ),
+            SizedBox(height: 16),
+            TextField(
+              controller: passwordController,
+              decoration: InputDecoration(
+                labelText: 'Password',
+                border: OutlineInputBorder(),
               ),
-              SizedBox(height: 30),
-              // Form Email
-              TextField(
-                decoration: InputDecoration(
-                  labelText: "Enter Email",
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.email),
-                ),
-                keyboardType: TextInputType.emailAddress,
-              ),
-              SizedBox(height: 20),
-              // Form Password
-              TextField(
-                decoration: InputDecoration(
-                  labelText: "Password",
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.lock),
-                  suffixIcon: Icon(Icons.visibility_off),
-                ),
-                obscureText: true,
-              ),
-              SizedBox(height: 10),
-              // Teks "Forgot Password?"
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {
-                    // Aksi untuk lupa password
-                    print("Forgot Password clicked");
-                  },
-                  child: Text(
-                    "Forget Password?",
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              
-              ElevatedButton(
-                onPressed: () {
-                  
-                  print("Sign In clicked");
-                },
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 50), 
-                ),
-                child: Text("Sign In"),
-              ),
-              SizedBox(height: 20),
-              
+              obscureText: true,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: handleSignIn,
+              child: Text('Sign In'),
+            ),
+            SizedBox(height: 20),
+              // Atau Sign In dengan
               Text(
                 "or sign in with",
                 style: TextStyle(fontSize: 14, color: Colors.black54),
@@ -109,32 +83,17 @@ class SignInScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
-              // Teks untuk mendaftar akun baru
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Don’t have an account? "),
-                  GestureDetector(
-                    onTap: () {
-                      // Aksi untuk Sign Up
-                      print("Sign Up clicked");
-                    },
-                    child: Text(
-                      "Sign Up Now",
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+
+            SizedBox(height: 16),
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/signup');
+              },
+              child: Text('Don’t have an account? Sign Up'),
+            ),
+          ],
         ),
       ),
     );
   }
 }
-
